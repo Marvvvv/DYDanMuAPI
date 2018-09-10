@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yukari.dydanmuapi.mapper.BulletHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.yukari.dydanmuapi.model.BulletHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="ulevel" jdbcType="INTEGER" property="ulevel" />
+    <result column="headIcon_url" jdbcType="VARCHAR" property="headiconUrl" />
+    <result column="fans_card_name" jdbcType="VARCHAR" property="fansCardName" />
+    <result column="fans_card_level" jdbcType="INTEGER" property="fansCardLevel" />
+    <result column="fans_card_room_id" jdbcType="INTEGER" property="fansCardRoomId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, room_id, uid, uname, ulevel, headIcon_url, fans_card_name, fans_card_level, fans_card_room_id, 
+    content, date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dy_bullet_histoy_196
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dy_bullet_histoy_196
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    insert into dy_bullet_histoy_196 (id, room_id, uid, 
+      uname, ulevel, headIcon_url, 
+      fans_card_name, fans_card_level, fans_card_room_id, 
+      content, date)
+    values (#{id,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{uname,jdbcType=VARCHAR}, #{ulevel,jdbcType=INTEGER}, #{headiconUrl,jdbcType=VARCHAR}, 
+      #{fansCardName,jdbcType=VARCHAR}, #{fansCardLevel,jdbcType=INTEGER}, #{fansCardRoomId,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    insert into dy_bullet_histoy_196
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="ulevel != null">
+        ulevel,
+      </if>
+      <if test="headiconUrl != null">
+        headIcon_url,
+      </if>
+      <if test="fansCardName != null">
+        fans_card_name,
+      </if>
+      <if test="fansCardLevel != null">
+        fans_card_level,
+      </if>
+      <if test="fansCardRoomId != null">
+        fans_card_room_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="ulevel != null">
+        #{ulevel,jdbcType=INTEGER},
+      </if>
+      <if test="headiconUrl != null">
+        #{headiconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardName != null">
+        #{fansCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardLevel != null">
+        #{fansCardLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fansCardRoomId != null">
+        #{fansCardRoomId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    update dy_bullet_histoy_196
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="ulevel != null">
+        ulevel = #{ulevel,jdbcType=INTEGER},
+      </if>
+      <if test="headiconUrl != null">
+        headIcon_url = #{headiconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardName != null">
+        fans_card_name = #{fansCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardLevel != null">
+        fans_card_level = #{fansCardLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fansCardRoomId != null">
+        fans_card_room_id = #{fansCardRoomId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    update dy_bullet_histoy_196
+    set room_id = #{roomId,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      ulevel = #{ulevel,jdbcType=INTEGER},
+      headIcon_url = #{headiconUrl,jdbcType=VARCHAR},
+      fans_card_name = #{fansCardName,jdbcType=VARCHAR},
+      fans_card_level = #{fansCardLevel,jdbcType=INTEGER},
+      fans_card_room_id = #{fansCardRoomId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yukari.dydanmuapi.model.BulletHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="executer_type" jdbcType="INTEGER" property="executerType" />
+    <result column="executer_id" jdbcType="INTEGER" property="executerId" />
+    <result column="executer_name" jdbcType="VARCHAR" property="executerName" />
+    <result column="shutUp_id" jdbcType="INTEGER" property="shutupId" />
+    <result column="shutUp_name" jdbcType="VARCHAR" property="shutupName" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="ban_time" jdbcType="VARCHAR" property="banTime" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, room_id, executer_type, executer_id, executer_name, shutUp_id, shutUp_name, end_time, 
+    ban_time, date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dy_shutup_196
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dy_shutup_196
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    insert into dy_shutup_196 (id, room_id, executer_type, 
+      executer_id, executer_name, shutUp_id, 
+      shutUp_name, end_time, ban_time, 
+      date)
+    values (#{id,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{executerType,jdbcType=INTEGER}, 
+      #{executerId,jdbcType=INTEGER}, #{executerName,jdbcType=VARCHAR}, #{shutupId,jdbcType=INTEGER}, 
+      #{shutupName,jdbcType=VARCHAR}, #{endTime,jdbcType=TIMESTAMP}, #{banTime,jdbcType=VARCHAR}, 
+      #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    insert into dy_shutup_196
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="executerType != null">
+        executer_type,
+      </if>
+      <if test="executerId != null">
+        executer_id,
+      </if>
+      <if test="executerName != null">
+        executer_name,
+      </if>
+      <if test="shutupId != null">
+        shutUp_id,
+      </if>
+      <if test="shutupName != null">
+        shutUp_name,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="banTime != null">
+        ban_time,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="executerType != null">
+        #{executerType,jdbcType=INTEGER},
+      </if>
+      <if test="executerId != null">
+        #{executerId,jdbcType=INTEGER},
+      </if>
+      <if test="executerName != null">
+        #{executerName,jdbcType=VARCHAR},
+      </if>
+      <if test="shutupId != null">
+        #{shutupId,jdbcType=INTEGER},
+      </if>
+      <if test="shutupName != null">
+        #{shutupName,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="banTime != null">
+        #{banTime,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    update dy_shutup_196
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="executerType != null">
+        executer_type = #{executerType,jdbcType=INTEGER},
+      </if>
+      <if test="executerId != null">
+        executer_id = #{executerId,jdbcType=INTEGER},
+      </if>
+      <if test="executerName != null">
+        executer_name = #{executerName,jdbcType=VARCHAR},
+      </if>
+      <if test="shutupId != null">
+        shutUp_id = #{shutupId,jdbcType=INTEGER},
+      </if>
+      <if test="shutupName != null">
+        shutUp_name = #{shutupName,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="banTime != null">
+        ban_time = #{banTime,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    update dy_shutup_196
+    set room_id = #{roomId,jdbcType=INTEGER},
+      executer_type = #{executerType,jdbcType=INTEGER},
+      executer_id = #{executerId,jdbcType=INTEGER},
+      executer_name = #{executerName,jdbcType=VARCHAR},
+      shutUp_id = #{shutupId,jdbcType=INTEGER},
+      shutUp_name = #{shutupName,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      ban_time = #{banTime,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yukari.dydanmuapi.model.BulletHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="ulevel" jdbcType="INTEGER" property="ulevel" />
+    <result column="headIcon_url" jdbcType="VARCHAR" property="headiconUrl" />
+    <result column="fans_card_name" jdbcType="VARCHAR" property="fansCardName" />
+    <result column="fans_card_level" jdbcType="INTEGER" property="fansCardLevel" />
+    <result column="fans_card_room_id" jdbcType="INTEGER" property="fansCardRoomId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, room_id, uid, uname, ulevel, headIcon_url, fans_card_name, fans_card_level, fans_card_room_id, 
+    content, date
+  </sql>
+  <sql id="Base_Table">
+    dy_bullet_histoy_196
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dy_bullet_histoy_196
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dy_bullet_histoy_196
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    insert into dy_bullet_histoy_196 (id, room_id, uid, 
+      uname, ulevel, headIcon_url, 
+      fans_card_name, fans_card_level, fans_card_room_id, 
+      content, date)
+    values (#{id,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{uname,jdbcType=VARCHAR}, #{ulevel,jdbcType=INTEGER}, #{headiconUrl,jdbcType=VARCHAR}, 
+      #{fansCardName,jdbcType=VARCHAR}, #{fansCardLevel,jdbcType=INTEGER}, #{fansCardRoomId,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    insert into dy_bullet_histoy_196
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="ulevel != null">
+        ulevel,
+      </if>
+      <if test="headiconUrl != null">
+        headIcon_url,
+      </if>
+      <if test="fansCardName != null">
+        fans_card_name,
+      </if>
+      <if test="fansCardLevel != null">
+        fans_card_level,
+      </if>
+      <if test="fansCardRoomId != null">
+        fans_card_room_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="ulevel != null">
+        #{ulevel,jdbcType=INTEGER},
+      </if>
+      <if test="headiconUrl != null">
+        #{headiconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardName != null">
+        #{fansCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardLevel != null">
+        #{fansCardLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fansCardRoomId != null">
+        #{fansCardRoomId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    update dy_bullet_histoy_196
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="ulevel != null">
+        ulevel = #{ulevel,jdbcType=INTEGER},
+      </if>
+      <if test="headiconUrl != null">
+        headIcon_url = #{headiconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardName != null">
+        fans_card_name = #{fansCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCardLevel != null">
+        fans_card_level = #{fansCardLevel,jdbcType=INTEGER},
+      </if>
+      <if test="fansCardRoomId != null">
+        fans_card_room_id = #{fansCardRoomId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yukari.dydanmuapi.model.BulletHistory">
+    update dy_bullet_histoy_196
+    set room_id = #{roomId,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      ulevel = #{ulevel,jdbcType=INTEGER},
+      headIcon_url = #{headiconUrl,jdbcType=VARCHAR},
+      fans_card_name = #{fansCardName,jdbcType=VARCHAR},
+      fans_card_level = #{fansCardLevel,jdbcType=INTEGER},
+      fans_card_room_id = #{fansCardRoomId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getAllBulletHistory" resultMap="BaseResultMap">
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM
+    <include refid="Base_Table" />
+  </select>
+
+</mapper>
