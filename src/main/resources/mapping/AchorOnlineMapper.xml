@@ -3,19 +3,19 @@
 <mapper namespace="com.yukari.dydanmuapi.mapper.BulletHistoryMapper">
 
   <sql id="Base_Column_List">
-    id, room_id, uid, uname, ulevel, headIcon_url, fans_card_name, fans_card_level, fans_card_room_id,
-    content, date
+    id, room_id, online_status, date
   </sql>
 
   <sql id="Base_Table">
-    dy_bullet_histoy_196
+    dy_anchor_online
   </sql>
 
-  <select id="getAllBulletHistory" resultType="com.yukari.dydanmuapi.model.BulletHistory">
+  <select id="getLastInfo" resultType="com.yukari.dydanmuapi.model.AchorOnline">
     SELECT
-    <include refid="Base_Column_List" />
+    <include refid="Base_Column_List"/>
     FROM
-    <include refid="Base_Table" />
+    <include refid="Base_Table"/>
+    ORDER BY id DESC LIMIT 0,1
   </select>
 
 </mapper>

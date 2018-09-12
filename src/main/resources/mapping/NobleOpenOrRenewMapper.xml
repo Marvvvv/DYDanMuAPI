@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yukari.dydanmuapi.mapper.NobleOpenOrRenewMapper" >
+
+  <sql id="Base_Column_List" >
+    id, type, uid, uname, headIcon_url, room_id, anchor_name, noble_type, noble_name, 
+    date
+  </sql>
+
+  <sql id="Base_Table">
+    dy_noble_openup_renew
+  </sql>
+
+  <select id="getGiftRadiosByTime" parameterType="java.lang.String" resultType="com.yukari.dydanmuapi.model.NobleOpenOrRenew">
+    SELECT 
+    <include refid="Base_Column_List"/>
+    FROM
+    <include refid="Base_Table"/>
+    WHERE type = 1 AND date > #{boxEndTime}
+  </select>
+  
+  
+</mapper>
