@@ -10,4 +10,14 @@
     dy_shutup_196
   </sql>
 
+  <select id="getByTimeRange" resultType="com.yukari.dydanmuapi.model.ShutUpHistory">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM
+    <include refid="Base_Table"/>
+    WHERE date BETWEEN #{startTime} AND #{endTime}
+    ORDER BY date DESC
+  </select>
+
+
 </mapper>

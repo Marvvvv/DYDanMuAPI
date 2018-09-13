@@ -2,20 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yukari.dydanmuapi.mapper.BulletHistoryMapper">
 
-  <sql id="Base_Column_List">
-    id, room_id, uid, uname, ulevel, headIcon_url, fans_card_name, fans_card_level, fans_card_room_id,
-    content, date
-  </sql>
-
-  <sql id="Base_Table">
-    dy_bullet_histoy_196
-  </sql>
-
-  <select id="getAllBulletHistory" resultType="com.yukari.dydanmuapi.model.BulletHistory">
+  <!--<select id="getAllBulletHistory" resultType="com.yukari.dydanmuapi.model.BulletHistory">
     SELECT
     <include refid="Base_Column_List" />
     FROM
     <include refid="Base_Table" />
+    WHERE 1=1
+  </select>-->
+
+  <select id="queryBulletRankByRange" resultType="java.util.Map">
+    SELECT uid,uname,headIcon_url,COUNT(uid) AS 'count'
+    FROM dy_bullet_histoy_196
+    WHERE date BETWEEN #{startTime} AND #{endTime} GROUP BY uid ORDER BY COUNT(uid) DESC LIMIT 0,8
   </select>
+
 
 </mapper>

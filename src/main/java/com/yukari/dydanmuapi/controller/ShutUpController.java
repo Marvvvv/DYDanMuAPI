@@ -1,49 +1,36 @@
 package com.yukari.dydanmuapi.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yukari.dydanmuapi.model.BaseEntity;
-import com.yukari.dydanmuapi.service.BulletService;
+import com.yukari.dydanmuapi.model.BulletHistory;
+import com.yukari.dydanmuapi.service.ShutUpService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
-@RequestMapping("/bullet")
-public class BulletController {
+@RequestMapping("/shutup")
+public class ShutUpController {
 
     @Autowired
-    BulletService bulletService;
+    ShutUpService shutUpService;
 
-    @GetMapping("/pagehelperTest")
-    public BaseEntity pageHelper (int page,int pageSize) {
-        return new BaseEntity(0,bulletService.findAllBullet(page));
-    }
-
-
-
-    @GetMapping("/countRank")
-    public BaseEntity bulletCountRank (String timeRange) {
+    @GetMapping("/byRange")
+    public BaseEntity getShutUpByRange (String timeRange,int page) {
         if (StringUtils.isBlank(timeRange)) {
             return new BaseEntity(1,"参数不能为空!");
         }
         try {
-            List<Map<String,Object>> rankInfo = bulletService.bulletCountRank(timeRange);
-            return new BaseEntity(0,rankInfo);
+            return new BaseEntity(0,shutUpService.findByRange(timeRange,page,5));
         } catch (Exception e) {
             return new BaseEntity(1,"数据库连接丢失!");
         }
     }
-
-
-
-
-
-
 
 
 

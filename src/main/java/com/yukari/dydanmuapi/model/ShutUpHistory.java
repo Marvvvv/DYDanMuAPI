@@ -22,7 +22,7 @@ public class ShutUpHistory {
 
     private String shutUp_name;
 
-    private Date end_time;
+    private String end_time;
 
     private String ban_time;
 

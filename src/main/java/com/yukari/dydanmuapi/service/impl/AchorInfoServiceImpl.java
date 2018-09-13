@@ -23,7 +23,7 @@ public class AchorInfoServiceImpl implements AchorInfoService {
 
     @Override
     public BaseEntity getAchorInfo() {
-        // 获取最后一次直播状态
+        // 获取最后一次直播状态 @TODO  数据库表结构重构
         AchorOnline ao = achorOnlineMapper.getLastInfo();
         Map<String,Object> map = new HashMap<>();
         map.put("onlineStatus",ao.getOnline_status());
