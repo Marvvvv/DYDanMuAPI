@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yukari.dydanmuapi.mapper.ShutUpHistoryMapper" >
+<mapper namespace="com.yukari.mapper.ShutUpHistoryMapper" >
   <sql id="Base_Column_List" >
     id, room_id, executer_type, executer_id, executer_name, shutUp_id, shutUp_name, end_time, 
     ban_time, date
@@ -10,7 +10,7 @@
     dy_shutup_196
   </sql>
 
-  <select id="getByTimeRange" resultType="com.yukari.dydanmuapi.model.ShutUpHistory">
+  <select id="getByTimeRange" resultType="com.yukari.model.ShutUpHistory">
     SELECT
     <include refid="Base_Column_List"/>
     FROM

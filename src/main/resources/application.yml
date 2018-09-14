@@ -10,7 +10,7 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
-          url: jdbc:mysql://127.0.0.1:3306/dy_data_transfer?useSSL=false
+          url: jdbc:mysql://103.45.106.89:3306/dy_data_transfer?useSSL=false
           username: root
           password: mao@1230...
           #配置初始化大小/最小/最大

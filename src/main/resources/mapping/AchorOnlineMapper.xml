@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yukari.dydanmuapi.mapper.BulletHistoryMapper">
+<mapper namespace="com.yukari.mapper.BulletHistoryMapper">
 
   <sql id="Base_Column_List">
     id, room_id, online_status, date
@@ -10,7 +10,7 @@
     dy_anchor_online
   </sql>
 
-  <select id="getLastInfo" resultType="com.yukari.dydanmuapi.model.AchorOnline">
+  <select id="getLastInfo" resultType="com.yukari.model.AchorOnline">
     SELECT
     <include refid="Base_Column_List"/>
     FROM
