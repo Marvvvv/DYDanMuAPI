@@ -11,7 +11,7 @@ import java.util.Date;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
-public class DydanmuapiApplicationTests {
+public class ApplicationRunTests {
 
 	@Test
 	public void contextLoads() {

@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.yukari.mapper")
-public class DydanmuapiApplication {
+public class ApplicationRun {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DydanmuapiApplication.class, args);
+		SpringApplication.run(ApplicationRun.class, args);
 	}
 }
