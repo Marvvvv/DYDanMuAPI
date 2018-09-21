@@ -10,4 +10,8 @@ public interface BulletHistoryMapper {
     List<BulletHistory> getAllBulletHistory();
 
     List<Map<String,Object>> queryBulletRankByRange(@Param("startTime") String startTime, @Param("endTime") String endTime);
+
+
+    List<BulletHistory> getByUid (@Param("uid") int uid, @Param("startTime") String startTime, @Param("endTime") String endTime);
+
 }

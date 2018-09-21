@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yukari.mapper.AnchorOnlineTimeMapper">
+
+    <select id="getLast" resultType="com.yukari.model.AnchorOnlineTime">
+        SELECT * FROM dy_anchor_onlineTime ORDER BY id DESC LIMIT 0,1
+    </select>
+
+    <select id="getOneMonthAllTimeLength" resultType="java.lang.String">
+        SELECT online_length FROM dy_anchor_onlinetime WHERE  online_length != "" AND  onlineTime BETWEEN #{startTime} AND #{endTime}
+    </select>
+
+
+</mapper>

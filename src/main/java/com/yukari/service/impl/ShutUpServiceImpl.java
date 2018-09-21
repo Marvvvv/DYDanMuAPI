@@ -3,6 +3,7 @@ package com.yukari.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yukari.mapper.ShutUpHistoryMapper;
+import com.yukari.model.BulletHistory;
 import com.yukari.model.ShutUpHistory;
 import com.yukari.service.ShutUpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +54,5 @@ public class ShutUpServiceImpl implements ShutUpService {
         PageInfo result = new PageInfo(shutUpHistoryList);
         return result;
     }
+
 }

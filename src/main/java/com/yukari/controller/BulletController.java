@@ -1,6 +1,8 @@
 package com.yukari.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.yukari.model.BaseEntity;
+import com.yukari.model.BulletHistory;
 import com.yukari.service.BulletService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,15 @@ public class BulletController {
     }
 
 
+    @GetMapping("/getByUid")
+    public BaseEntity getShutUpByUid (int uid,String shutUpTime,int page) {
+        try {
+            PageInfo<BulletHistory> bulletHistorys = bulletService.findByUid(uid,shutUpTime,page,10);
+            return new BaseEntity(0,bulletHistorys);
+        } catch (Exception e) {
+            return new BaseEntity(1,"数据库连接丢失!");
+        }
+    }
 
 
 

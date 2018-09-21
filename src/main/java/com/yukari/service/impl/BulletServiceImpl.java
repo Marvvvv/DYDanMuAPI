@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,8 @@ public class BulletServiceImpl implements BulletService {
     BulletHistoryMapper bulletHistoryMapper;
 
     private static Logger logger = LoggerFactory.getLogger(BulletServiceImpl.class);
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /*
      * 这个方法中用到了我们开头配置依赖的分页插件pagehelper
@@ -69,6 +73,23 @@ public class BulletServiceImpl implements BulletService {
             endTime = year + "-" + month + "-" + "31 00:00:00";
         }
         return bulletHistoryMapper.queryBulletRankByRange(startTime,endTime);
+    }
+
+
+    public PageInfo<BulletHistory> findByUid (int uid, String shutUpTime, int page, int pageSize) throws ParseException {
+        PageHelper.startPage(page, pageSize);
+
+        // 获取禁言时间的前后一小时的时间范围
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(sdf.parse(shutUpTime));
+        calendar.add(Calendar.HOUR,-1);
+        String startTime = sdf.format(calendar.getTime());
+        calendar.add(Calendar.HOUR,+2);
+        String endTime = sdf.format(calendar.getTime());
+
+        List<BulletHistory> bullets = bulletHistoryMapper.getByUid(uid,startTime,endTime);
+        PageInfo result = new PageInfo(bullets);
+        return result;
     }
 
 }

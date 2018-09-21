@@ -16,5 +16,11 @@
     WHERE date BETWEEN #{startTime} AND #{endTime} GROUP BY uid ORDER BY COUNT(uid) DESC LIMIT 0,8
   </select>
 
+  <select id="getByUid" resultType="com.yukari.model.BulletHistory">
+    SELECT uid,uname,fans_card_name,fans_card_level,content,date FROM dy_bullet_histoy_196
+    WHERE uid = #{uid} AND date BETWEEN #{startTime} AND #{endTime}
+    ORDER BY date DESC
+  </select>
+
 
 </mapper>
